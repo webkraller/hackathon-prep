@@ -2,8 +2,6 @@
 <div id="pane">
 
 
-/tweets/submit/id/handle
-
   <div class="form-group has-success has-feedback" id="tweetinput">
   <form >
     <label class="control-label" for="urlinput">Bad Tweet Url</label>
@@ -15,3 +13,4 @@
 
 </div>
 </div>
+
