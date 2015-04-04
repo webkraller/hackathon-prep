@@ -61,7 +61,7 @@
 	<?php echo $this->Session->flash(); ?>
 
 	<?php echo $this->fetch('content'); ?>
-<?echo $this->element('tweets/feed.ctp'); ?>
+<?php echo $this->element('tweets/feed.ctp'); ?>
 
 <div id="footer">
 	<p>
