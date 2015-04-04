@@ -36,4 +36,12 @@ class TweetsController extends AppController {
 		}
 	}
 
+	public function submit($tweet_id, $twitter_handle, $datetime = null) {
+		$tweet = array ('id'=>$tweet_id,'twitter_user_handle'=>$twitter_handle);
+		if(!empty($datetime)) { $tweet['tweet_date'] = $datetime; }
+		if ($this->Tweet->save($this->request->data)) {
+			$this->Session->setFlash(__('Your tweet has been sent.'));
+			$this->redirect('/');
+		}
+	}
 }
