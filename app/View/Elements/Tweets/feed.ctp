@@ -15,6 +15,8 @@
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  margin-bottom:1em;
+  cursor:pointer;
 }
 
 .btn:hover {
@@ -27,8 +29,8 @@
   text-decoration: none;
 }
 .tweet_div{
-	border-bottom:1px solid black;
-	padding-bottom:1em;
+  border-bottom:1px solid black;
+  padding-bottom:1em;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -39,14 +41,14 @@
 <?php
 $tweets = array("https://twitter.com/elimcgowan/status/584235719574626305", "https://twitter.com/toriwatsonphoto/status/584212483424067584", "https://twitter.com/BobCarlin1/status/584147217260359680");
 foreach($tweets as $tweet){
-	echo '<div class="tweet_div" data-url="'.$tweet.'" style="margin:auto;display:block;width:500px"></div>';
+  echo '<div class="tweet_div" data-url="'.$tweet.'" style="margin:auto;display:block;width:500px; margin-bottom:3em"></div>';
 }
 ?>
 </div>
 <script>
 $(document).ready(function(){
-	$(".tweet_div").each(function(){
-		var tweet = $(this);
+  $(".tweet_div").each(function(){
+    var tweet = $(this);
         tweet.show();
         var url = tweet.data("url");
         $.ajax({
@@ -54,18 +56,27 @@ $(document).ready(function(){
             dataType: "jsonp",
             success: function(data){
                 tweet.html(data.html);
-                $("<a class='btn'>Up</a><a class='btn'>Down</a>")
-    				.appendTo(tweet)
-				    .position({
-				        my: 'left bottom',
-				        at: 'left bottom',
-				        of: this,
-				        offset: '0'
-				    });
-                
-            }
+            $("<a id='positive_reviews' class='btn'>Up</a>")
+            .appendTo(tweet)
+            .position({
+                my: 'left bottom',
+                at: 'left bottom',
+                of: tweet,
+                offset: '0'
+            });
+            $("<a id='negative_reviews' class='btn'>Down</a>")
+            .appendTo(tweet)
+            .position({
+                my: 'right bottom',
+                at: 'right bottom',
+                of: tweet,
+                offset: '0'
+            });
+            });//end of btn
+            }//End of success
         });
     });
+  
 })
 </script>
 
